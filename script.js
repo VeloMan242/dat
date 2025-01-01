@@ -6,13 +6,13 @@ function handleRequest() {
     const data = urlParams.get('data');
 
     if (!action || !uniqueID) {
-        displayResponse({ error: "Invalid request. Action and ID are required." });
+        displayResponse({ error: "Invalid request" });
         return;
     }
 
     if (action === "send") {
         if (!data) {
-            displayResponse({ error: "Data is required for the send action." });
+            displayResponse({ error: "Data is required" });
             return;
         }
         database[uniqueID] = JSON.parse(data);
@@ -25,7 +25,7 @@ function handleRequest() {
             displayResponse({ error: `No data found for ID: ${uniqueID}` });
         }
     } else {
-        displayResponse({ error: "Invalid action. Use 'send' or 'get'." });
+        displayResponse({ error: "Invalid action." });
     }
 }
 function displayResponse(response) {
